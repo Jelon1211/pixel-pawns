@@ -20,6 +20,7 @@ export default function Home() {
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
           </p>
+          <p className=''>test</p>
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -110,7 +111,7 @@ export default function Home() {
           >
             <h2 className={inter.className}>
               Deploy <span>-&gt;</span>
-            </h2>
+            </h2>z
             <p className={inter.className}>
               Instantly deploy your Next.js site to a shareable URL
               with&nbsp;Vercel.
