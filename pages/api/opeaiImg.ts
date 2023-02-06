@@ -14,16 +14,43 @@ type Data = {
   error?: any,
 }
 
+
+let imgSrc = ""
+let name = ""
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
   ) {
 
-
+    const {prompt} = req.body
+    try{
+      const response = await openai.createImage({
+        prompt,
+        n: 1,
+        size: "256x256",
+      });
+      imgSrc = response.data.data[0].url
+      name =  response.data.created
+        }catch(error) {
+      // Consider adjusting the error handling logic for your use case
+      if (error.response) {
+        console.error(error.response.status, error.response.data)
+        res.status(error.response.status).json(error.response.data)
+      } else {
+        console.error(`Error with OpenAI API request: ${error.message}`)
+        res.status(500).json({
+          error: {
+            message: 'An error occurred during your request.',
+          }
+        });
+      }
+    } 
 
 // File save ------------------------------------------------------------
-    const url = "https://www.arcanewonders.com/wp-content/uploads/2021/05/BeastmasterWarlock.png"
-    const path = "pages/api/images/elo.png"
+
+    const url = imgSrc;
+    const path = `pages/api/images/${name}.png`
     async function downloadImage(url: string, filepath: string) {
         const response = await Axios({
             url,
