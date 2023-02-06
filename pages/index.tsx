@@ -10,7 +10,7 @@ export default function Home() {
   
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const response = await fetch("/api/openai", {
+    const responseStats = await fetch("/api/openaiStats", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,14 +19,26 @@ export default function Home() {
         prompt: e.target.prompt.value,
       }),
     });
-    let prediction = await response.json();
+    let prediction = await responseStats.json();
+    console.log(prediction);
     setPrediction(prediction);
     setCharName(e.target.prompt.value);
   };
+  const handleSubmit2 = async (e: any) => {
+    e.preventDefault();
+    const responseImg = await fetch("/api/opeaiImg", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: e.target.prompt.value,
+      }),
+    });
+    let predictionImg = await responseImg.json();
+    console.log(predictionImg);
+  };
 
-  useEffect(()=> {
-    console.log(prediction);
-  },[prediction])
 
   return (
     <><>
@@ -53,17 +65,21 @@ export default function Home() {
                 Attack: {prediction? prediction.attack : ""}
               </p>
               <p>
-                Health Points: {prediction? prediction.healthpoints : ""}
+                Health Points: {prediction? prediction.healthpoint : ""}
               </p>
               <p>
                 Type: {prediction? prediction.type : ""}
               </p>
             </div>
           </div>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <input type="text" name="prompt" placeholder="Enter a prompt to display an image" defaultValue="Mage"/>
         <button type="submit">Go!</button>
-      </form>
+        </form>
+        <form onSubmit={handleSubmit2}>
+        <input type="text" name="prompt" placeholder="Enter a prompt to display an image"/>
+        <button type="submit">Go!2</button>
+        </form>
           <p>Prompt</p>
       </div>
     </>
