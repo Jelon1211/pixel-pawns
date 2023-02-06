@@ -27,7 +27,6 @@ export default async function handler(
 
     const warrior = JSON.parse(response.data.choices[0].text);
 
-    console.log(prompt);
     res.status(200).json( warrior );
     }catch (error) {
       res.status(400).json({error});

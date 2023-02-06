@@ -1,13 +1,24 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [prediction, setPrediction] = useState<any>(null);
-  const [error, setError] = useState(null);
+  const [stats, setStats] = useState<any>(null);
   const [charName, setCharName] = useState<string>("");
+  const [charImg, setCharImg] = useState<string>("");
+  const [userId, setUserId] = useState<number>(0);
+  const [error, setError] = useState(null);
   
+
+  // IdGeneretor (before register is set)
+useEffect(() => {
+  function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+  setUserId(getRandomInt(9999999))
+},[])
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const responseStats = await fetch("/api/openaiStats", {
@@ -19,13 +30,12 @@ export default function Home() {
         prompt: e.target.prompt.value,
       }),
     });
-    let prediction = await responseStats.json();
-    console.log(prediction);
-    setPrediction(prediction);
+    let stats = await responseStats.json();
+    console.log(stats);
+    setStats(stats);
     setCharName(e.target.prompt.value);
-  };
-  const handleSubmit2 = async (e: any) => {
-    e.preventDefault();
+
+    // Img create
     const responseImg = await fetch("/api/opeaiImg", {
       method: "POST",
       headers: {
@@ -33,12 +43,13 @@ export default function Home() {
       },
       body: JSON.stringify({
         prompt: e.target.prompt.value,
+        id: userId
       }),
     });
-    let predictionImg = await responseImg.json();
-    console.log(predictionImg);
+    let imgResponse = await responseImg.json();
+    console.log(imgResponse);
+    setCharImg(imgResponse);
   };
-
 
   return (
     <><>
@@ -51,34 +62,31 @@ export default function Home() {
     </>
       <div className='w-full min-h-screen flex flex-col justify-center items-center bg-zinc-700'>
           <div className='flex'>
-            <Image
-            src="https://wow.zamimg.com/uploads/screenshots/normal/177053-mage-jaina-official-blizzard-fan-art-by-beili-ren.jpg"
-            alt='dupa i tak nic'
+            <Image 
+            src={charImg}
+            alt='Your character'
             width={256}
             height={256}
+            priority
             />
             <div>
               <p>
-                {prediction ? charName : ""}
+                {stats ? charName : ""}
               </p>
               <p>
-                Attack: {prediction? prediction.attack : ""}
+                Attack: {stats? stats.attack : ""}
               </p>
               <p>
-                Health Points: {prediction? prediction.healthpoint : ""}
+                Health Points: {stats? stats.healthpoint : ""}
               </p>
               <p>
-                Type: {prediction? prediction.type : ""}
+                Type: {stats? stats.type : ""}
               </p>
             </div>
           </div>
         <form onSubmit={handleSubmit}>
         <input type="text" name="prompt" placeholder="Enter a prompt to display an image" defaultValue="Mage"/>
         <button type="submit">Go!</button>
-        </form>
-        <form onSubmit={handleSubmit2}>
-        <input type="text" name="prompt" placeholder="Enter a prompt to display an image"/>
-        <button type="submit">Go!2</button>
         </form>
           <p>Prompt</p>
       </div>

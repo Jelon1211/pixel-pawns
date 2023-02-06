@@ -16,14 +16,13 @@ type Data = {
 
 
 let imgSrc = ""
-let name = ""
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
   ) {
 
-    const {prompt} = req.body
+    const prompt = req.body.prompt + "pixel art"
     try{
       const response = await openai.createImage({
         prompt,
@@ -31,7 +30,7 @@ export default async function handler(
         size: "256x256",
       });
       imgSrc = response.data.data[0].url
-      name =  response.data.created
+      res.status(200).json(imgSrc)
         }catch(error) {
       // Consider adjusting the error handling logic for your use case
       if (error.response) {
@@ -50,7 +49,7 @@ export default async function handler(
 // File save ------------------------------------------------------------
 
     const url = imgSrc;
-    const path = `pages/api/images/${name}.png`
+    const path = `public/images/${req.body.id}.png`
     async function downloadImage(url: string, filepath: string) {
         const response = await Axios({
             url,
