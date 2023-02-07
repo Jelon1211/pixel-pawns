@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
+  swcMinify: true,
+  async rewrites(){
+    return [
+      {
+        source: '/',
+        destination: '/html/index.html',
+      }
+    ]
+  },
   images: {
     remotePatterns: [
       {

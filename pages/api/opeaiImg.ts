@@ -49,7 +49,7 @@ export default async function handler(
 // File save ------------------------------------------------------------
 
     const url = imgSrc;
-    const path = `public/images/${req.body.id}.png`
+    const path = `public/users/${req.body.id}.png`
     async function downloadImage(url: string, filepath: string) {
         const response = await Axios({
             url,
