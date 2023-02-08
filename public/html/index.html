@@ -15,7 +15,7 @@
 
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
-  <a class="device-notification--logo" href="#0">
+  <a class="device-notification--logo" href="/dashboard">
     <img src="assets/img/logo.png" alt="Pixel Pawns" width="50" height="50">
     <p>Pixel Pawns</p>
   </a>
@@ -27,11 +27,13 @@
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
         <header class="header">
-          <a class="header--logo" href="#0">
+          <a class="header--logo" href="/dashboard">
             <img src="assets/img/logo.png" alt="Pixel Pawns" width="50" height="50">
             <p>Pixel Pawns</p>
           </a>
-          <button class="header--cta cta">Try Out</button>
+          <form action="/dashboard">
+          <button class="header--cta cta" type="submit">Try Out</button>
+          </form>
           <div class="header--nav-toggle">
             <span></span>
           </div>
@@ -50,7 +52,11 @@
             <div class="intro">
               <div class="intro--banner">
                 <h1>Your own<br>Dream<br>Warrior</h1>
-                <button class="cta">Try out
+                <form action="/dashboard" style="
+                    z-index: 9999999;
+                    position: relative;
+                ">
+                <button class="cta" type="submit">Try out
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
                   <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
                     <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
@@ -58,7 +64,41 @@
                   </svg>
                   <span class="btn-background"></span>
                 </button>
-                <img src="assets/img/introduction-visual.png" alt="Welcome">
+              </form>
+                <!-- <img src="assets/img/introduction-visual.png" alt="Welcome"> -->
+                <div class="portrait-1">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur eaque incidunt dignissimos ullam voluptates, quae non earum voluptatem commodi architecto enim recusandae a aliquam nihil unde doloribus sit amet eum reprehenderit fuga saepe sunt dolorum! Enim, velit magnam voluptatum nobis delectus aspernatur necessitatibus repudiandae laboriosam rerum ipsum sunt officiis? Est eos atque quos, totam voluptatibus harum, provident neque delectus eligendi, sapiente a eum ipsam illo dolorem deserunt! Sit molestiae quisquam architecto excepturi officiis, assumenda nostrum corrupti. Consequuntur itaque officia necessitatibus, aperiam earum quam nesciunt, quis incidunt consectetur modi perspiciatis nobis? Omnis, placeat? Amet quaerat voluptatem, libero eligendi laboriosam harum dolorem consequuntur ipsam praesentium possimus laudantium illo voluptatibus reprehenderit ipsum voluptates, omnis modi dignissimos saepe. Error explicabo, dolore nostrum consectetur quam fuga exercitationem ex mollitia sit totam eum cum delectus illo impedit pariatur tempore modi hic deleniti sed aspernatur molestiae aperiam officia? Quidem, sint ullam beatae minus eveniet pariatur? Hic, dolorem fugit. Nobis doloremque et voluptas ipsam voluptatum debitis fuga laboriosam harum doloribus sequi quos nulla in unde sit quo ut accusamus, eum accusantium ducimus ex? Possimus odio provident inventore labore quod voluptas adipisci saepe suscipit nulla nemo totam fugiat ex incidunt quisquam, laborum nostrum delectus sed voluptates repellat, voluptatibus at et? Cumque mollitia quod dolorum nihil, aspernatur fugiat sequi nemo quas dolorem voluptatibus ratione reprehenderit voluptatem est, ut laudantium et sunt esse suscipit aut! Eius rem explicabo consequatur repellendus iusto cupiditate excepturi dicta odit reiciendis iure quia ducimus, pariatur esse, a assumenda, maiores provident! Libero repellendus id dolores reprehenderit necessitatibus laborum provident praesentium impedit itaque, quos nobis! Eaque quibusdam quidem expedita sit assumenda eius repellendus reprehenderit nostrum rem minima aliquid ut distinctio obcaecati officia autem eum a saepe reiciendis fuga ad sequi quisquam, quod tempora explicabo! Illo iure soluta, quaerat fuga quia ea alias nostrum, non, quas reiciendis perspiciatis voluptatibus?
+                </div>
+                <style>
+                .portrait-1{
+                position: absolute;
+                bottom: 21px;
+                right: -379px;
+                font-size: 24px;
+                line-height: 22px;
+                background: url(assets/img/introduction-visual.png) fixed center no-repeat;
+                background-size: contain;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: rgba(255, 255, 255, .01);
+                  }
+                  @media screen and (max-width:767px) {
+                    .portrait-1{
+                      bottom: -146px;
+                      right: -198px;
+                      font-size: 10px;
+                      line-height: 14px;
+                    }
+                  }
+                  @media (min-width:767px) and (max-width:900px) {
+                      .portrait-1 {
+                        bottom: 21px;
+                        right: -227px;
+                        font-size: 15px;
+                        line-height: 22px;
+                      }
+                  }
+                </style>
               </div>
               <div class="intro--options">
                 <a href="/dashboard">
@@ -142,7 +182,13 @@
                     </svg>
                   </span>
                 </a>
-                <img src="assets/img/about-visual.png" alt="About Us">
+                <img src="assets/img/main1.png" alt="Pixel art giant with a mace" style="
+                position: absolute;
+                bottom: -178px;
+                right: -330px;
+                width: 708px;
+                ">
+
               </div>
               <div class="about--options">
                 <a href="https://youtube.com">
@@ -160,9 +206,31 @@
           <li class="l-section section">
             <div class="contact">
               <div class="contact--lockup">
-                <div class="modal">
+                <article class="carousel-article 1">
+                  <div class="carousel-div 1">
+                    <ul class="carousel-ul">
+                      <li class="carousel-li"><img src="images/2.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/1357967.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/2564805.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/4034457.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/5752144.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/6632848.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/8356388.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/9005610.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/9422274.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/9761034.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/1675713355.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/elo.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/elo1.png" class="carousel-img" /></li>
+                      <li class="carousel-li"><img src="images/mainpic.png" class="carousel-img" /></li>
+                    </ul>
+                  </div>
+                </article>
+
+
+                <div class="modal"> 
                   <div class="modal--information">
-                    <p>Rules</p>
+                    <p>What can be said here?</p>
                     <!-- <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a>
                     <a href="tel:+148126287560">+48 12 628 75 60</a> -->
                   </div>

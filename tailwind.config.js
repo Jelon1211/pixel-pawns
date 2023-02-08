@@ -13,12 +13,14 @@ module.exports = {
     fontFamily: {
       display: ['Open Sans', 'sans-serif'],
       body: ['Open Sans', 'sans-serif'],
+      'montserrat': ['Montserrat'],
     },
-    extend: {
+    extend: { 
       fontSize: {
         14: '14px',
       },
       backgroundColor: {
+        'main-button': '#0f33ff',
         'main-bg': '#FAFBFB',
         'main-dark-bg': '#20232A',
         'secondary-dark-bg': '#33373E',
@@ -45,10 +47,6 @@ module.exports = {
       },
       minHeight: {
         590: '590px',
-      },
-      backgroundImage: {
-        'hero-pattern':
-          "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
       },
     },
   },

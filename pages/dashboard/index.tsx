@@ -1,3 +1,4 @@
+import ButtonCTA from '@/components/Button'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -85,10 +86,9 @@ useEffect(() => {
               </div>
             </div>
           <form onSubmit={handleSubmit}>
-          <input type="text" name="prompt" placeholder="Enter a prompt to display an image" defaultValue="Mage"/>
-          <button type="submit">Go!</button>
+          <input type="text" name="prompt" placeholder="Enter a prompt to display an image" style={{color: "black"}}/>
+          <ButtonCTA text='Create a character' />
           </form>
-            <p>Prompt</p>
         </div>
       </>
     )
