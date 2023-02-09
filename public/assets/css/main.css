@@ -38,7 +38,6 @@ img.carousel-img {
     min-width: 300px;
     top: 115px;
   }
-  
  @keyframes bannermove {
     0% {
     transform: translateX(0);
