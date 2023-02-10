@@ -23,7 +23,6 @@ export default async function handler(
       max_tokens: 35,
       temperature: 0,
     });
-  
 
     const warrior = JSON.parse(response.data.choices[0].text);
 
